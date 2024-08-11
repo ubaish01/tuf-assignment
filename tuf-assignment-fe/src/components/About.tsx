@@ -2,7 +2,7 @@ const About = ({ active }: { active: boolean }) => {
   return (
     <div
       className={`2xl:container ${
-        active ? "translate-y-0" : "-translate-y-[80%]"
+        active ? "translate-y-0" : "-translate-y-[100%]"
       }  2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4`}
     >
       <div className="flex flex-col lg:flex-row justify-between gap-8">
