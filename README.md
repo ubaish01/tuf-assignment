@@ -1,4 +1,4 @@
-# Web Development Assignment - Poster Management Website
+# SWE Assignment - TakeUForward
 
 ## Admin Access
 
