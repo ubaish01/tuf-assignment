@@ -31,7 +31,7 @@ const useBanner = () => {
     }
   };
 
-  const toggleBaner = async () => {
+  const toggleBanner = async () => {
     try {
       const response = await putRequest(BANNER.TOGGLE);
       if (response.data.success) {
@@ -99,7 +99,7 @@ const useBanner = () => {
   return {
     banner,
     updateBanner,
-    toggleBaner,
+    toggleBanner,
     timer,
     active,
     isLoading,
