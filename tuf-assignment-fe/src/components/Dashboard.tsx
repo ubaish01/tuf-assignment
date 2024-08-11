@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "./ui/Input";
 import Textarea from "./ui/Textarea";
 import { Button } from "./Button";
-import useBanner from "../hooks/useBanner";
+import useBanner, { bannerType } from "../hooks/useBanner";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
   const { banner, updateBanner, isLoading } = useBanner();
-  const [data, setData] = useState({
+  const [data, setData] = useState<bannerType>({
     heading: "",
     content: "",
     timer: 60,
@@ -107,7 +107,7 @@ const Dashboard = () => {
         <Button
           className="bg-slate-600  px-24 py-2 w-full "
           onClick={() => {
-            setData(banner);
+            setData(banner as bannerType);
           }}
         >
           Reset

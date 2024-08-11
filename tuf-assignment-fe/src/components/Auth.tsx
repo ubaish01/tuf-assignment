@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import spinner from "../assets/spinner.svg";
 import { Button } from "./Button";
 import Input from "./ui/Input";
 
@@ -11,10 +10,6 @@ const Auth = () => {
     password: "",
   });
   const { isLoading, login } = useAuth();
-
-  const onChangeEmail = (e: any) => setData({ ...data, email: e.target.value });
-  const onChangePassword = (e: any) =>
-    setData({ ...data, password: e.target.value });
 
   const submit = (e: any) => {
     e.preventDefault();
