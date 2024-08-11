@@ -32,9 +32,15 @@ const Banner: React.FC<{
               <Link to="/" className="py-2 px-6 flex">
                 Contact
               </Link>
-              <Link to="/auth" className="py-2 step-6 px-6 flex">
-                {login ? "Admin" : "Signin"}
-              </Link>
+              {login ? (
+                <Link to="/dashboard" className="py-2  px-6 flex">
+                  Admin
+                </Link>
+              ) : (
+                <Link to="/auth" className="py-2 step-6 px-6 flex">
+                  Signin
+                </Link>
+              )}
             </nav>
             <button className="lg:hidden flex flex-col ml-4">
               <span className="w-6 h-1 bg-white mb-1"></span>
