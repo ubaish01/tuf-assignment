@@ -1,6 +1,10 @@
-const Pricing = () => {
+const Pricing = ({ active }: { active: boolean }) => {
   return (
-    <section className="py-20 dark:bg-gray-100 dark:text-gray-800">
+    <section
+      className={`py-32  bg-gray-100  text-gray-800 ${
+        active ? "translate-y-0" : "-translate-y-[80%]"
+      }`}
+    >
       <div className="container px-4 mx-auto">
         <div className="max-w-2xl mx-auto mb-16 text-center">
           <span className="font-bold tracking-wider uppercase dark:text-violet-600">

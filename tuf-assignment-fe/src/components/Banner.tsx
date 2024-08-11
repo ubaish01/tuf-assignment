@@ -1,11 +1,14 @@
 import React from "react";
 import clsx from "clsx";
-import useBanner from "../hooks/useBanner";
+import { bannerType } from "../hooks/useBanner";
 import { Link } from "react-router-dom";
 
-const Banner: React.FC = () => {
-  const { timer, active, banner, closeBanner } = useBanner();
-
+const Banner: React.FC<{
+  timer: string;
+  active: boolean;
+  banner?: bannerType;
+  closeBanner: () => void;
+}> = ({ timer, active, banner, closeBanner }) => {
   const login = localStorage.getItem("login");
 
   return (

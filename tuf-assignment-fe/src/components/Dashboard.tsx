@@ -133,6 +133,43 @@ const Dashboard = () => {
             </Button>
           </div>
         </>
+      ) : isLoading ? (
+        <>
+          <h1 className="mb-2 animate-pulse text-3xl font-semibold bg-gray-500 h-8 w-80 rounded-md"></h1>
+          <div className="bg-[#2b3a53]  animate-pulse flex-col flex text-gray-400 gap-2 2xl:w-2/4 md:3/4 w-full   md:p-8 sm:p-4 p-2 py-4   rounded-md">
+            <div className="text-2xl h-6 w-72 rounded-md bg-gray-500"></div>
+            <div className="grid gap-1 my-4">
+              <div className="text-2xl h-3 w-[20rem] rounded-md bg-gray-500"></div>
+              <div className="text-2xl h-3 w-[30rem] rounded-md bg-gray-500"></div>
+              <div className="text-2xl h-3 w-[16rem] rounded-md bg-gray-500"></div>
+              <div className="text-2xl h-3 w-[32rem] rounded-md bg-gray-500"></div>
+            </div>
+            <div className="flex items-center gap-2">
+              Link :{" "}
+              <div className="underline cursor-pointer h-4 w-[16rem] rounded-md bg-gray-500"></div>
+            </div>
+            <div>
+              <div className="col-span-1 flex flex-col ">
+                <span className=" py-2">Banner active</span>
+                <label className="inline-flex items-center px-4 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={data?.active}
+                    onClick={toggleBanner}
+                    className="sr-only peer"
+                  />
+                  <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                </label>
+              </div>{" "}
+            </div>
+          </div>
+          <Button
+            className="bg-slate-500   px-24  mt-2"
+            onClick={() => setState(STATE.EDIT)}
+          >
+            Edit
+          </Button>
+        </>
       ) : (
         <>
           <h1 className="mb-2 text-3xl font-semibold text-white">
