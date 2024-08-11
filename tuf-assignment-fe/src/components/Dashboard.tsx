@@ -6,8 +6,14 @@ import useBanner, { bannerType } from "../hooks/useBanner";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
+const STATE = {
+  EDIT: 1,
+  PREVIEW: 2,
+};
+
 const Dashboard = () => {
-  const { banner, updateBanner, isLoading } = useBanner();
+  const { banner, toggleBanner, updateBanner, isLoading } = useBanner();
+  const [state, setState] = useState(STATE.PREVIEW);
   const [data, setData] = useState<bannerType>({
     heading: "",
     content: "",
@@ -51,77 +57,117 @@ const Dashboard = () => {
           Logout
         </Button>
       </div>
-      <div className="bg-[#2b3a53] text-gray-400 gap-2 2xl:w-2/4 md:3/4 w-full grid grid-cols-2  md:p-8 sm:p-4 p-2 py-4   rounded-md">
-        <div className="col-span-2">
-          <span className="px-2 py-2">Heading of the banner</span>
-          <Input
-            placeholder="eg: 20% off on on diwali"
-            value={data.heading}
-            setValue={(val: any) => setData({ ...data, heading: val })}
-          />
-        </div>
-        <div className="col-span-2">
-          <span className="px-2 py-2">Description of the banner</span>
+      {state === STATE.EDIT ? (
+        <>
+          <div className="bg-[#2b3a53] text-gray-400 gap-2 2xl:w-2/4 md:3/4 w-full grid grid-cols-2  md:p-8 sm:p-4 p-2 py-4   rounded-md">
+            <div className="col-span-2">
+              <span className="px-2 py-2">Heading of the banner</span>
+              <Input
+                placeholder="eg: 20% off on on diwali"
+                value={data.heading}
+                setValue={(val: any) => setData({ ...data, heading: val })}
+              />
+            </div>
+            <div className="col-span-2">
+              <span className="px-2 py-2">Description of the banner</span>
 
-          <Textarea
-            placeholder="eg: Lorem ipsum dolor sit amet."
-            inputClass="h-40"
-            value={data.content}
-            setValue={(val: any) => setData({ ...data, content: val })}
-          />
-        </div>
-        <div className="col-span-2">
-          {" "}
-          <span className="px-2 py-2">Redirected link</span>
-          <Input
-            placeholder="eg: https://takeyouforward.org/sale"
-            value={data.link}
-            setValue={(val: any) => setData({ ...data, link: val })}
-          />
-        </div>
-        <div className="col-span-1">
-          <span className="px-2 py-2">Timer(in seconds)</span>
-          <Input
-            placeholder="eg: 60"
-            value={data.timer}
-            type="number"
-            setValue={(val: any) => setData({ ...data, timer: val })}
-          />
-        </div>
-        <div className="col-span-1 flex flex-col px-2">
-          <span className="px-2 py-2">Banner active</span>
-          <label className="inline-flex items-center px-4 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={data?.active}
+              <Textarea
+                placeholder="eg: Lorem ipsum dolor sit amet."
+                inputClass="h-40"
+                value={data.content}
+                setValue={(val: any) => setData({ ...data, content: val })}
+              />
+            </div>
+            <div className="col-span-2">
+              {" "}
+              <span className="px-2 py-2">Redirected link</span>
+              <Input
+                placeholder="eg: https://takeyouforward.org/sale"
+                value={data.link}
+                setValue={(val: any) => setData({ ...data, link: val })}
+              />
+            </div>
+            <div className="col-span-1">
+              <span className="px-2 py-2">Timer(in seconds)</span>
+              <Input
+                placeholder="eg: 60"
+                value={data.timer}
+                type="number"
+                setValue={(val: any) => setData({ ...data, timer: val })}
+              />
+            </div>
+            <div className="col-span-1 flex flex-col px-2">
+              <span className="px-2 py-2">Banner active</span>
+              <label className="inline-flex items-center px-4 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={data?.active}
+                  onClick={() => {
+                    setData({ ...data, active: !data.active });
+                  }}
+                  className="sr-only peer"
+                />
+                <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+              </label>
+            </div>
+          </div>
+          <div className="gap-2 sm:flex-row flex-col mt-2 flex px-2">
+            <Button
+              className="bg-slate-600  px-24 py-2 w-full "
               onClick={() => {
-                setData({ ...data, active: !data.active });
+                setData(banner as bannerType);
+                setState(STATE.PREVIEW);
               }}
-              className="sr-only peer"
-            />
-            <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-          </label>
-        </div>
-      </div>
-      <div className="gap-2 sm:flex-row flex-col mt-2 flex px-2">
-        <Button
-          className="bg-slate-600  px-24 py-2 w-full "
-          onClick={() => {
-            setData(banner as bannerType);
-          }}
-        >
-          Reset
-        </Button>
-        <Button
-          className="bg-slate-500   px-24  py-2 w-full "
-          loading={isLoading}
-          onClick={() => {
-            updateBanner(data);
-          }}
-        >
-          Update
-        </Button>
-      </div>
+            >
+              Reset
+            </Button>
+            <Button
+              className="bg-slate-500   px-24  py-2 w-full "
+              loading={isLoading}
+              onClick={async () => {
+                await updateBanner(data);
+                setState(STATE.PREVIEW);
+              }}
+            >
+              Update
+            </Button>
+          </div>
+        </>
+      ) : (
+        <>
+          <h1 className="mb-2 text-3xl font-semibold text-white">
+            Banner Content Preview
+          </h1>
+          <div className="bg-[#2b3a53] flex-col flex text-gray-400 gap-2 2xl:w-2/4 md:3/4 w-full   md:p-8 sm:p-4 p-2 py-4   rounded-md">
+            <div className="text-2xl">{data?.heading}</div>
+            <div>{data?.content}</div>
+            <div>
+              Link :{" "}
+              <span className="underline cursor-pointer">{data?.link}</span>
+            </div>
+            <div>
+              <div className="col-span-1 flex flex-col ">
+                <span className=" py-2">Banner active</span>
+                <label className="inline-flex items-center px-4 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={data?.active}
+                    onClick={toggleBanner}
+                    className="sr-only peer"
+                  />
+                  <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                </label>
+              </div>{" "}
+            </div>
+          </div>
+          <Button
+            className="bg-slate-500   px-24  mt-2"
+            onClick={() => setState(STATE.EDIT)}
+          >
+            Edit
+          </Button>
+        </>
+      )}
     </div>
   );
 };

@@ -31,7 +31,7 @@ const useBanner = () => {
     }
   };
 
-  const toggleBaner = async () => {
+  const toggleBanner = async () => {
     try {
       const response = await putRequest(BANNER.TOGGLE);
       if (response.data.success) {
@@ -92,13 +92,18 @@ const useBanner = () => {
     fetchBanner();
   }, []);
 
+  const closeBanner = () => {
+    setTime(0);
+  };
+
   return {
     banner,
     updateBanner,
-    toggleBaner,
+    toggleBanner,
     timer,
     active,
     isLoading,
+    closeBanner,
   };
 };
 
