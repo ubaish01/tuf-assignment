@@ -22,12 +22,15 @@ const useBanner = () => {
   const [isLoading, setLoading] = useState(false);
 
   const fetchBanner = async () => {
+    setLoading(true);
     try {
       const response = await getRequest(BANNER.DEFAULT);
       setBanner(response.data.banner);
       console.log(response.data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
