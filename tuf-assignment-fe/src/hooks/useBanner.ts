@@ -92,6 +92,10 @@ const useBanner = () => {
     fetchBanner();
   }, []);
 
+  const closeBanner = () => {
+    setTime(0);
+  };
+
   return {
     banner,
     updateBanner,
@@ -99,6 +103,7 @@ const useBanner = () => {
     timer,
     active,
     isLoading,
+    closeBanner,
   };
 };
 
