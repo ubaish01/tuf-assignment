@@ -1,5 +1,5 @@
 import Banner from "./Banner";
-import ContentSection from "./Content";
+// import ContentSection from "./Content";
 import Footer from "./Footer";
 import Pricing from "./Pricing";
 

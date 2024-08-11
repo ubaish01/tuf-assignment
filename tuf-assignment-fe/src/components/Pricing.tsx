@@ -1,5 +1,3 @@
-import React from "react";
-
 const Pricing = () => {
   return (
     <section className="py-20 dark:bg-gray-100 dark:text-gray-800">
