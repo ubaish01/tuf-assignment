@@ -2,7 +2,7 @@ const Pricing = ({ active }: { active: boolean }) => {
   return (
     <section
       className={`py-32  bg-gray-100  text-gray-800 ${
-        active ? "translate-y-0" : "-translate-y-[80%]"
+        active ? "translate-y-0" : "-translate-y-[100%]"
       }`}
     >
       <div className="container px-4 mx-auto">
