@@ -15,7 +15,7 @@ const Banner: React.FC<{
     <div className="bg-slate-800  relative overflow-hidden ">
       <header className="h-24 sm:h-32 flex items-center z-30 w-full">
         <div className="container mx-auto px-6 flex items-center justify-between">
-          <div className="uppercase font-black text-3xl bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent">
+          <div className="uppercase step-0 font-black text-3xl bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent">
             TakeUforward
           </div>
           <div className="flex items-center">
@@ -32,7 +32,7 @@ const Banner: React.FC<{
               <Link to="/" className="py-2 px-6 flex">
                 Contact
               </Link>
-              <Link to="/auth" className="py-2 px-6 flex">
+              <Link to="/auth" className="py-2 step-6 px-6 flex">
                 {login ? "Admin" : "Signin"}
               </Link>
             </nav>
@@ -54,28 +54,28 @@ const Banner: React.FC<{
         <section className="bg-slate-800 w-full h-screen items-center justify-center flex body-font ">
           <div className="container mx-auto flex md:px-24 md:py-10 md:flex-row flex-col items-center">
             <div className="lg:flex-grow mt-5 md:mt-0   md:w-1.5/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-              <h1 className="text-2xl capitalize font-extrabold leading-9 tracking-tight mb-3 text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-normal">
+              <h1 className="text-2xl  step-1 capitalize font-extrabold leading-9 tracking-tight mb-3 text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-normal">
                 {banner?.heading}
               </h1>
-              <p className="mb-8 md:pl-0  pl-2 pr-2 leading-relaxed dark:text-gray-300">
+              <p className="mb-8 md:pl-0 step-2  pl-2 pr-2 leading-relaxed dark:text-gray-300">
                 {banner?.content}
               </p>
               <div className="flex justify-center">
                 <Link
                   to={banner?.link || ""}
                   target="_blank"
-                  className="inline-flex text-white bg-emerald-600 border-0 py-2 px-6 focus:outline-none hover:bg-emerald-600 rounded text-lg"
+                  className="inline-flex step-3 text-white bg-emerald-600 border-0 py-2 px-6 focus:outline-none hover:bg-emerald-600 rounded text-lg"
                 >
                   Get Started 🚀
                 </Link>
                 <a
                   onClick={closeBanner}
-                  className="ml-4 inline-flex cursor-pointer text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
+                  className="ml-4 inline-flex step-4 cursor-pointer text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
                 >
                   Close Banner
                 </a>
               </div>
-              <div className="text-white text-2xl mt-4">
+              <div className="text-white text-2xl step-5 mt-4">
                 Banner will automatically disapear in{" "}
                 <span className="bg-gradient-to-r font-bold from-purple-500 to-pink-600 bg-clip-text text-transparent">
                   {timer}

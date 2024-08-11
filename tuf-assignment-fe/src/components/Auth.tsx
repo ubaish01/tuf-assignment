@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { Button } from "./Button";
 import Input from "./ui/Input";
@@ -22,7 +22,19 @@ const Auth = () => {
     if (login) navigate("/dashboard");
   }, [localStorage]);
   return (
-    <div className="w-screen flex items-center justify-center h-screen">
+    <div className="w-screen flex flex-col gap-8 items-center justify-center h-screen">
+      <h1 className="text-white md:px-12 px-4">
+        Note : Login creds already shared in the provided google form's last
+        input. if you missed no worries please check the readme file of this
+        repo
+        <Link
+          to="https://github.com/ubaish01/tuf-assignment"
+          target="_blank"
+          className="underline text-purple-500 ml-2"
+        >
+          Here
+        </Link>
+      </h1>
       <div className="relative mx-auto w-full max-w-md bg-[#2b3a53] px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
         <div className="w-full">
           <div className="text-center">
