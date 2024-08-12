@@ -3,7 +3,7 @@ import Input from "./ui/Input";
 import Textarea from "./ui/Textarea";
 import { Button } from "./Button";
 import useBanner, { bannerType } from "../hooks/useBanner";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Joyride from "react-joyride";
 import { JOYRIDE_STEPS_FOR_DASHBOARD } from "../constants";
@@ -45,7 +45,26 @@ const Dashboard = () => {
   return (
     <>
       <div className="w-full xl:px-72 lg:px-60 md:px-32 sm:px-12 px-2 relative py-24 flex flex-col items-center justify-center h-screen">
-        <div className="fixed top-8 right-8">
+        <div className="fixed top-8 right-0 px-8  w-full flex items-center justify-between">
+          <Link
+            to="/"
+            className="text-white rounded-full p-3 hover:scale-105 duration-200 hover:bg-slate-700 bg-slate-600 flex items-center justify-center size-16"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              className="size-12"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+              />
+            </svg>
+          </Link>
           <Button
             className="bg-slate-600 px-12 step-6 py-4 flex items-center justify-center gap-2 "
             onClick={logout}

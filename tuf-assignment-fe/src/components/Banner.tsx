@@ -33,11 +33,17 @@ const Banner: React.FC<{
                 Contact
               </Link>
               {login ? (
-                <Link to="/dashboard" className="py-2  px-6 flex">
+                <Link
+                  to="/dashboard"
+                  className="py-2 bg-purple-600 font-semibold rounded-md  px-6 flex"
+                >
                   Admin
                 </Link>
               ) : (
-                <Link to="/auth" className="py-2 step-6 px-6 flex">
+                <Link
+                  to="/auth"
+                  className="py-2 bg-purple-600 font-semibold rounded-md step-6 px-6 flex"
+                >
                   Signin
                 </Link>
               )}

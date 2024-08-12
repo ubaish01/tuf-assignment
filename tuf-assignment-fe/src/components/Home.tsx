@@ -18,6 +18,11 @@ const Home = () => {
 
   return (
     <div>
+      <div className="text-center flex items-center justify-center text-white bg-black py-2">
+        Note : using serverless worker in the backend, it shut down the server
+        when no one visit for long time, so on the first visit it might take 1-2
+        minutes of time to restart the service.{" "}
+      </div>
       <Banner
         timer={timer}
         active={active}
