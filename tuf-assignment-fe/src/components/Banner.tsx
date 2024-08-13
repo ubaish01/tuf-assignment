@@ -58,7 +58,7 @@ const Banner: React.FC<{
       </header>
       <div
         className={clsx(
-          active ? "translate-x-0" : "translate-x-[90%]",
+          active ? "translate-x-0" : "translate-x-[110%]",
           // active ? "flex" : "hidden",
           " bg-slate-800 flex relative justify-center duration-1000 z-20 transition-all items-center overflow-hidden"
         )}
